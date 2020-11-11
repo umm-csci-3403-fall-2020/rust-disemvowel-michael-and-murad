@@ -133,7 +133,7 @@ mod tests {
         use super::*;
         #[test]
         fn requires_two_arguments() {
-            let mut cmd = Command::cargo_bin("rust-disemvowel").unwrap();
+            let mut cmd = Command::cargo_bin("disemvowel-in-rust").unwrap();
             cmd.arg("1");
             cmd.assert()
                 .failure()
@@ -141,7 +141,7 @@ mod tests {
         }
         #[test]
         fn requires_read_file() {
-            let mut cmd = Command::cargo_bin("rust-disemvowel").unwrap();
+            let mut cmd = Command::cargo_bin("disemvowel-in-rust").unwrap();
             cmd.arg("/this/path/does/not/exist")
                 .arg("output/path/doesnt/matter");
             cmd.assert()

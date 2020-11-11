@@ -17,7 +17,7 @@ fn main() {
 
     //TODO: Panic if not enough arguments are provided
     //Panic should output the string "Not enough arguments"
-    if arg.len() != 3 {
+    if args.len() != 3 {
         panic!("Not enough arguments");
     }
 
@@ -27,14 +27,14 @@ fn main() {
     //  * Write the disemvoweled text using write_file
 
     // Replace String::from("test") with what you get from read_file
-    let filePath = Path::new(&args[1]);
-    let s = String::from(read_file(filePath));
+    let f_path = Path::new(&args[1]);
+    let s = read_file(f_path);
 
     let s_disemvowel = disemvowel(&s);
     
     // Use command-line arguments for the name of the file,
     // and s_disemvowel for the text to write out.
-    write_file(Path::new("dummy.txt"), "output string");
+    write_file(Path::new(&args[2]), &s_disemvowel);
 }
 
 fn read_file(path: &Path) -> String {
@@ -46,8 +46,9 @@ fn write_file(path: &Path, s: &str) {
 
 //TODO: Return the input string without vowels
 fn is_vowel(x: char) -> bool {
-    if x == 'a' || x == 'e' || x == 'i' || x =='o' || x == 'u' ==
-       x == 'A' || x== 'E' || x == 'I' || x == 'O' || x == 'U'  
+    if x == 'a' || x == 'A' || x == 'e' || 
+       x == 'E' || x == 'i'|| x == 'I' || 
+       x == 'o' || x == 'O' || x == 'u' || x == 'U'  
     {
     return true;
         }else{
@@ -57,9 +58,9 @@ fn is_vowel(x: char) -> bool {
 fn disemvowel(s: &str) -> String{
     let mut fs = String::new();
 
-    for line in s.chars() {
-        if !is_vowel(line){
-            fs.push(line);
+    for c in s.chars() {
+        if !is_vowel(c){
+            fs.push(c);
     }
 }
     String::from(fs)
